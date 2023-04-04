@@ -1,0 +1,14 @@
+FROM ubuntu
+
+# 환경변수 설정
+ENV SERVICE_ROOT /home
+ENV SERVICE_VENV venv
+ENV SERVICE_DIR web
+
+# 환경변수 조합 -> WORKDIR 지정
+# 해당 디렉토리가 없다면 만들어서 현재 디렉토리로 이동
+# mkdir, cd를 포함한 명령
+WORKDIR $SERVICE_ROOT/$SERVICE_VENV/$SERVICE_DIR
+
+# 실행
+RUN ["pwd"]

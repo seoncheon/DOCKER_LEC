@@ -1,0 +1,15 @@
+services:
+  # 컨테이너 명 기술, was는 임의의 이름 = 컨테이너명
+  was:
+    # 이미지 출처 혹은 이미지 빌드(생성) 등 정보 기술 : Dockerfile or 직접 기술
+    build:
+      # Dockerfile이 존재하는 폴더 지정
+      context: was_app
+      # 타겟 -> 이미지명
+      target: builder
+    # flask를 정상적으로 종료시키기 위해서 Ctrl+C -> 종료시그널
+    # SIGINT 값을 설정 -> Ctrl+C 키보드 인터럽트 송신
+    stop_signal: SIGINT
+    # 포트
+    ports:
+      - '8000:8000'
